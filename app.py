@@ -38,5 +38,26 @@ def getS(topic):
     return redirect(topic)
 
 
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    error = "Can't enter"
+    if request.method == 'POST':
+        try:
+            topic = {
+                 request.form['Fname'] : request.form['Lname'],
+                }
+            db.child("Links").set(topic)
+            return render_template('about.html')
+        except:
+            error = "topic already exists"
+            return render_template('about.html', error=error)
+
+    return render_template('about.html', error=error)
+
+
+
+
+
 if __name__ == '__main__':
 	app.run(debug=True)
