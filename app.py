@@ -47,7 +47,7 @@ def signup():
             topic = {
                  request.form['Fname'] : request.form['Lname'],
                 }
-            db.child("Links").set(topic)
+            db.child("Links").push(topic)
             return render_template('about.html')
         except:
             error = "topic already exists"
