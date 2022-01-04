@@ -35,8 +35,7 @@ def fullList1():
 @app.route('/<string:topic>')
 def getS(topic):
     topic = db.child("Links").child(topic).get().val()
-    return topic
-
+    return redirect(topic)
 
 
 if __name__ == '__main__':
