@@ -48,12 +48,12 @@ def signup():
                  request.form['Fname'] : request.form['Lname']
                 }
             db.child("Links").push(topic)
-            return render_template('about.html')
+            return render_template('About.html')
         except:
             error = "topic already exists"
-            return render_template('about.html', error=error)
+            return render_template('About.html', error=error)
 
-    return render_template('about.html', error=error)
+    return render_template('About.html', error=error)
 
 
 
