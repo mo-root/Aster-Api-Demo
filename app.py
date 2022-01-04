@@ -29,7 +29,7 @@ app.config['SECRET_KEY'] = 'you-will-never-guess'
 
 @app.route('/')
 def fullList1():
-    return 'welcome'
+    return 'Aster api'
 
 
 @app.route('/<string:topic>')
