@@ -45,7 +45,7 @@ def signup():
     if request.method == 'POST':
         try:
             topic = {
-		 db.child("Links").get().val()
+# 		 db.child("Links").get().val()
                  request.form['Fname'] : request.form['Lname']
                 }
             db.child("Links").push(topic)
