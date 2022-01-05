@@ -34,7 +34,7 @@ def fullList1():
 
 @app.route('/<string:topic>')
 def getS(topic):
-    topic = db.child("Links").child(topic).get().val()
+    topic = db.child("Links").child(topic).child(topic).get().val()
     return redirect(topic)
 
 
@@ -44,11 +44,11 @@ def signup():
     error = "Can't enter"
     if request.method == 'POST':
         try:
-            topic = {
-# 		 db.child("Links").get().val()
-                 request.form['Fname'] : request.form['Lname']
+            tropic = {
+                request.form['Fname']: request.form['Lname']
                 }
-            db.child("Links").push(topic)
+            db.child("Links").child(request.form['Fname']).set(tropic)
+
             return render_template('About.html')
         except:
             error = "topic already exists"
