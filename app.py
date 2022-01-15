@@ -37,8 +37,19 @@ def getS(topic):
     topic = db.child("Links").child(topic).child(topic).get().val()
     return redirect(topic)
 
+#add a school to the database
+
+@app.route('/School/<string:name>')
+def addSchool(name):
+    if(db.child("Schools").child(name).child("numbers").get().val() == None):
+        db.child("Schools").child(name).child("numbers").set(1)
+        return "Successfully Added"
+    a = db.child("Schools").child(name).child("numbers").get().val()
+    db.child("Schools").child(name).child("numbers").set(a+1)
+    return "Successfully Added"
 
 
+#adding a lookup search
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     error = "Can't enter"
